@@ -1,0 +1,22 @@
+#Use pandas to identify the student who got lowest marks in more than 2 subjects.
+import pandas as pd
+
+data = {'Student': ['John', 'Mikey', 'Charon', 'Winston', 'Perkins'],
+        'DAA': [50, 70, 20, 80, 10],
+        'OS': [20, 90, 40, 50, 10],
+        'COA': [10, 60, 80, 30, 40]}
+df = pd.DataFrame(data)
+
+number_subjects = 2
+min_marks = df.min()
+number_lowest = (df == min_marks).sum(axis=1)
+students = df['Student'][number_lowest > number_subjects].tolist()
+
+if students:
+    print(f"The student(s) who got lowest marks in more than {number_subjects} subjects are: {students}")
+else:
+    print(f"No student got lowest marks in more than {number_subjects} subjects")
+    
+    
+ #output
+ #No student got lowest marks in more than 2 subjects
